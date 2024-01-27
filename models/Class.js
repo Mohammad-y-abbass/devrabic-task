@@ -1,7 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db.config');
 const Semester = require('./Semester');
-const Student = require('./Student');
 
 const Class = sequelize.define('Class', {
   classNo: {
@@ -24,7 +23,9 @@ const Class = sequelize.define('Class', {
   },
 });
 
-
-
+Class.belongsTo(Semester, {
+  foreignKey: 'semesterNo',
+  targetKey: 'semesterNo',
+});
 
 module.exports = Class;
